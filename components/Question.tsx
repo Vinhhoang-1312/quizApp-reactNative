@@ -38,7 +38,6 @@ const Question: React.FC<QuestionProps> = ({
     setError("");
     if (option === correct) setScore(score + 1);
 
-    // Lưu câu trả lời
     const updatedAnswers = [...userAnswers];
     updatedAnswers[currQues] = {
       question: questions[currQues].question,
@@ -95,17 +94,23 @@ const Question: React.FC<QuestionProps> = ({
         </TouchableOpacity>
       ))}
 
-      <View style={styles.controls}>
-        <TouchableOpacity style={[styles.controlButton, styles.quitButton]} onPress={onQuit}>
-          <Text style={styles.controlButtonText}>Quit</Text>
-        </TouchableOpacity>
+     <View style={styles.controls}>
+  <TouchableOpacity
+    style={[styles.controlButton, styles.quitButton]}
+    onPress={onQuit}
+  >
+    <Text style={[styles.controlButtonText, { color: "#ccc" }]}>Quit</Text>
+  </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.controlButton, styles.nextButton]} onPress={handleNextPress}>
-          <Text style={styles.controlButtonText}>
-            {currQues === questions.length - 1 ? "Submit" : "Next Question"}
-          </Text>
-        </TouchableOpacity>
-      </View>
+  <TouchableOpacity
+    style={[styles.controlButton, styles.nextButton]}
+    onPress={handleNextPress}
+  >
+    <Text style={styles.controlButtonText}>
+      {currQues === questions.length - 1 ? "Submit" : "Next Question"}
+    </Text>
+  </TouchableOpacity>
+</View>
     </View>
   );
 };
@@ -117,13 +122,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   questionCount: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
   },
   questionText: {
-    fontSize: 18,
+    fontSize: 20,
     marginBottom: 20,
+    color: "white",
   },
   optionButton: {
     backgroundColor: "#eee",
@@ -133,36 +139,53 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 16,
+    textAlign: "center",
   },
-  correctOption: {
-    backgroundColor: "#4CAF50",
-  },
-  wrongOption: {
-    backgroundColor: "#F44336",
-  },
-  controls: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: 20,
-  },
-  controlButton: {
-    flex: 1,
-    padding: 15,
-    borderRadius: 6,
-    alignItems: "center",
-    marginHorizontal: 5,
-  },
-  quitButton: {
-    backgroundColor: "#f44336",
-  },
-  nextButton: {
-    backgroundColor: "#2196F3",
-  },
-  controlButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
-    fontSize: 16,
-  },
+ correctOption: {
+  backgroundColor: "#9FD39F", 
+  borderColor: "#10B981",   
+  borderWidth: 1,
+},
+wrongOption: {
+  backgroundColor: "#CF9EA2",
+  borderColor: "#CD1423",   
+  borderWidth: 1,
+},
+ controls: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: 30,
+},
+
+controlButton: {
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  borderRadius: 30,
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.1,
+  shadowRadius: 3,
+  elevation: 2,
+},
+
+quitButton: {
+  backgroundColor: "transparent",
+  borderWidth: 1,
+  borderColor: "#ccc",
+  marginRight: 10,
+},
+
+nextButton: {
+  backgroundColor: "#1e90ff",
+},
+
+controlButtonText: {
+  color: "#fff",
+  fontWeight: "600",
+  fontSize: 16,
+},
+
   error: {
     color: "orange",
     marginBottom: 10,

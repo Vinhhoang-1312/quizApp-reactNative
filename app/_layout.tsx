@@ -9,13 +9,12 @@ export default function RootLayout() {
   const router = useRouter();
   
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require('../assets/fonts/Roboto_Condensed-Regular.ttf'),
   });
 
   if (!loaded) {
     // Async font loading only occurs in development.
-    return null;
-  }
+    return null;  }
 
   return (
     
